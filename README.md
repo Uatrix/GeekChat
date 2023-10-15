@@ -1,11 +1,20 @@
 # Geek Chat
 
+English | [简体中文](README-CN.md)
+
 A helpful AI Co-pilot in your device.
 
 Geek Chat is a cross-platform AI Client that supports MacOS, Windows, iPhone, iPad, Android Phone and Android Tablet.
 
 
+
 ![iOS](https://img.shields.io/badge/-iOS-black?style=flat-square&logo=apple&logoColor=white) ![Android](https://img.shields.io/badge/-Android-black?style=flat-square&logo=android&logoColor=white) ![macOS](https://img.shields.io/badge/-macOS-black?style=flat-square&logo=apple&logoColor=white) ![Windows](https://img.shields.io/badge/-Windows-black?style=flat-square&logo=windows&logoColor=white) ![GitHub all releases](https://img.shields.io/github/downloads/geeker-ai/geek_chat/total)
+
+<!-- <a title="Made with Fluent Design" href="https://github.com/bdlukaa/fluent_ui">
+  <img
+    src="https://img.shields.io/badge/fluent-design-blue?style=flat-square&color=gray&labelColor=0078D7"
+  >
+</a> -->
 
 ## Install Issues
 - Windows [troubleshoot-appinstaller-issues](https://learn.microsoft.com/zh-cn/windows/msix/app-installer/troubleshoot-appinstaller-issues)
@@ -75,9 +84,9 @@ Geek Chat is a cross-platform AI Client that supports MacOS, Windows, iPhone, iP
 
 ## Features
 
-- Supports iPhone, Android Phone, iPad, Android Tablet, Windows and MacOS
+- Compatible with iPhone, Android devices, iPad, Android tablets, Windows, and MacOS.
 - Enhanced prompting capability
-- Data is stored locally and will not be lost
+- Data is securely stored locally to protect privacy and enhance security.
 - Supports multiple cutting-edge LLM models and providers, such as OpenAI and Azure OpenAI
 - Markdown & Code Highlighting & Latex
 - Prompt Library, Message Quoting
@@ -89,10 +98,12 @@ Geek Chat is a cross-platform AI Client that supports MacOS, Windows, iPhone, iP
 ## Roadmap
 
 - [x] OpenAI Offical API compatibility.
+- [x] Dark/Light Theme Mode.
 - [x] Talk with quoted messages.
-- [ ] Prompt Library
+- [x] Multi Language support (en_US, zh-Hans).
+- [x] Prompt Library
+- [x] Azure OpenAI API compatibility
 - [ ] Copy button for code blocks
-- [ ] Azure OpenAI API compatibility
 - [ ] Chat with files.
 - [ ] DALL-E3
 - [ ] Chat with URLs.
@@ -128,4 +139,4 @@ flutter build ipa
 [![Star History Chart](https://api.star-history.com/svg?repos=geeker-ai/geek_chat&type=Date)](https://star-history.com/#geeker-ai/geek_chat&Date)
 
 ## License
-[GNU General Public License v3.0](./LICENSE)
+[BSD 2-Clause License](./LICENSE)

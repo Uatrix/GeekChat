@@ -1,16 +1,19 @@
-import 'package:event_bus/event_bus.dart';
 import 'package:flutter/material.dart';
 import 'package:geek_chat/components/settings/bottom_sheet_switcher.dart';
+import 'package:geek_chat/controller/main_controller.dart';
 import 'package:geek_chat/controller/settings.dart';
 import 'package:geek_chat/models/language.dart';
 import 'package:geek_chat/models/theme.dart';
 import 'package:get/get.dart';
+import 'package:logger/logger.dart';
 
 // ignore: must_be_immutable
 class SettingsComponent extends StatelessWidget {
-  const SettingsComponent({super.key});
+  SettingsComponent({super.key});
 
   // late List<Map<String, String>> options;
+  MainController mainController = Get.find();
+  Logger logger = Get.find();
 
   List<Map<String, String>> getLanguageOptions() {
     List<Map<String, String>> options = [];
@@ -97,9 +100,14 @@ class SettingsComponent extends StatelessWidget {
             leadingIcon: Icons.language_outlined,
             onTapCallback: (value) {
               controller.settingsLanguage = value;
+              logger.d("language: $value");
               controller.saveSettings();
-              EventBus eventBus = Get.find();
-              eventBus.fire(SettingsController.to.getLocale(value));
+              mainController.initPrompts().then((value) {
+                mainController.update();
+              });
+
+              // EventBus eventBus = Get.find();
+              // eventBus.fire(SettingsController.to.getLocale(value));
             },
           ),
 
