@@ -103,6 +103,7 @@ class DeskTopMainRightComponent extends StatelessWidget {
     return Container(
       alignment: Alignment.centerLeft,
       width: double.infinity,
+      // color: Colors.grey.shade50,
       child: Column(
         children: [
           Container(
@@ -114,41 +115,45 @@ class DeskTopMainRightComponent extends StatelessWidget {
               children: [
                 Text(
                   session.name,
-                  style: const TextStyle(fontSize: 18),
+                  style: TextStyle(fontSize: 18),
                 ),
-                TextButton.icon(
-                  onPressed: () {
-                    Get.toNamed('/editchat',
-                        parameters: {'opt': 'edit', 'sid': session.sid});
-                  },
-                  icon: const Icon(Icons.tune),
-                  label: Text(session.model),
-                ),
+                // TextButton.icon(
+                //   onPressed: () {
+                //     Get.toNamed('/editchat',
+                //         parameters: {'opt': 'edit', 'sid': session.sid});
+                //   },
+                //   icon: const Icon(Icons.tune),
+                //   label: Text(session.model),
+                // ),
                 const Expanded(
                   child: Text(''),
                 ),
                 IconButton(
-                  onPressed: () {
-                    Get.defaultDialog(
-                      title: "Clean Session".tr,
-                      onCancel: () {
-                        Get.back();
-                      },
-                      onConfirm: () {
-                        // onDelete(message);
-                        chatMessageController.cleanSessionMessages(
-                            chatListController.currentSession.sid);
-                        chatMessageController.update();
-                        Get.back();
-                      },
-                      textCancel: "Cancel".tr,
-                      textConfirm: "Confirm".tr,
-                      middleText: "Confirm clean session?".tr,
-                      radius: 5,
-                    );
-                  },
-                  icon: const Icon(Icons.cleaning_services),
+                  onPressed: () { },
+                  icon: Icon(Icons.more_vert),
                 ),
+                // IconButton(
+                //   onPressed: () {
+                //     Get.defaultDialog(
+                //       title: "Clean Session".tr,
+                //       onCancel: () {
+                //         Get.back();
+                //       },
+                //       onConfirm: () {
+                //         // onDelete(message);
+                //         chatMessageController.cleanSessionMessages(
+                //             chatListController.currentSession.sid);
+                //         chatMessageController.update();
+                //         Get.back();
+                //       },
+                //       textCancel: "Cancel".tr,
+                //       textConfirm: "Confirm".tr,
+                //       middleText: "Confirm clean session?".tr,
+                //       radius: 5,
+                //     );
+                //   },
+                //   icon: const Icon(Icons.cleaning_services),
+                // ),
                 // IconButton(
                 //   onPressed: () {
                 //   },
@@ -167,6 +172,12 @@ class DeskTopMainRightComponent extends StatelessWidget {
                 // )
                 // IconButton(onPressed: () {}, icon: Icon(Icons.edit))
               ],
+            ),
+          ),
+          SizedBox(
+            height: 1,
+            child: Container(
+              color: Colors.grey.shade100,
             ),
           ),
           Expanded(
@@ -219,8 +230,14 @@ class DeskTopMainRightComponent extends StatelessWidget {
               );
             }),
           ),
+          SizedBox(
+            height: 1,
+            child: Container(
+              color: Colors.grey.shade100,
+            ),
+          ),
           Container(
-            padding: const EdgeInsets.only(left: 10, right: 10, top: 10),
+            // padding: const EdgeInsets.only(left: 10, right: 10, top: 10),
             child: GetBuilder<ChatMessageController>(builder: (controller) {
               return Container(
                 padding: const EdgeInsets.only(top: 1),
@@ -228,13 +245,7 @@ class DeskTopMainRightComponent extends StatelessWidget {
                   children: [
                     Expanded(
                       child: Container(
-                        padding: const EdgeInsets.only(left: 2, right: 2),
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                              color: Theme.of(context).colorScheme.primary),
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(3)),
-                        ),
+                        // padding: const EdgeInsets.only(left: 2, right: 2),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -282,55 +293,66 @@ class QuestionInputComponent extends StatelessWidget {
         id: 'inputQuestion',
         builder: (controller) {
           textEditingController.text = controller.inputQuestion;
-          return TextField(
-            controller: textEditingController,
-            focusNode: questionInputFocus,
-            minLines: 1,
-            maxLines: 5,
-            textInputAction: TextInputAction.go,
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              enabledBorder: InputBorder.none,
-              focusedBorder: InputBorder.none,
-              filled: false,
-              suffixIcon: IconButton(
-                  onPressed: () {
-                    controller.submit(sid, onDone: () {
-                      chatListController.updateSessionLastEdit(
-                          chatListController.currentSession);
-                      chatListController.update();
-                    }, onError: () {
-                      chatListController.updateSessionLastEdit(
-                          chatListController.currentSession);
-                      chatListController.update();
-                    });
-                    scrollToBottom();
-                  },
-                  icon: const Icon(Icons.send)),
+          return Container(
+            color: Colors.white,
+            child:  TextField(
+              controller: textEditingController,
+              focusNode: questionInputFocus,
+              textInputAction: TextInputAction.go,
+              decoration: InputDecoration(
+                isCollapsed: false,
+                hintText: "Protmts",
+                filled: false,
+                hintStyle: TextStyle(color: Colors.black54),
+                border: OutlineInputBorder(borderRadius: BorderRadius.circular(0),borderSide: BorderSide.none),
+                enabledBorder:OutlineInputBorder(borderRadius: BorderRadius.circular(0),borderSide: BorderSide.none),
+                errorBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(0),borderSide: BorderSide.none),
+                focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(0),borderSide: BorderSide.none),
+                focusedErrorBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(0),borderSide: BorderSide.none),
+                disabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(0),borderSide: BorderSide.none),
+                suffixIcon: Container(
+                  margin: EdgeInsets.only(right: 10),
+                  child: IconButton(
+                      onPressed: () {
+                        controller.submit(sid, onDone: () {
+                          chatListController.updateSessionLastEdit(
+                              chatListController.currentSession);
+                          chatListController.update();
+                        }, onError: () {
+                          chatListController.updateSessionLastEdit(
+                              chatListController.currentSession);
+                          chatListController.update();
+                        });
+                        scrollToBottom();
+                      },
+                      icon: const Icon(Icons.send)
+                  ),
+                ),
+              ),
+              onChanged: (value) {
+                if (controller.isMessagesTooLong(controller.quoteMessages)) {
+                  showCustomToast(
+                      title: "Too many quote messages".tr, context: context);
+                }
+                controller.inputQuestion = value;
+                // controller.update(['inputQuestion']);
+              },
+              onSubmitted: (String value) {
+                controller.submit(sid, onDone: () {
+                  chatListController
+                      .updateSessionLastEdit(chatListController.currentSession);
+                  chatListController.update();
+                }, onError: () {
+                  chatListController
+                      .updateSessionLastEdit(chatListController.currentSession);
+                  chatListController.update();
+                });
+                scrollToBottom();
+              },
+              onTap: () {
+                //
+              },
             ),
-            onChanged: (value) {
-              if (controller.isMessagesTooLong(controller.quoteMessages)) {
-                showCustomToast(
-                    title: "Too many quote messages".tr, context: context);
-              }
-              controller.inputQuestion = value;
-              // controller.update(['inputQuestion']);
-            },
-            onSubmitted: (String value) {
-              controller.submit(sid, onDone: () {
-                chatListController
-                    .updateSessionLastEdit(chatListController.currentSession);
-                chatListController.update();
-              }, onError: () {
-                chatListController
-                    .updateSessionLastEdit(chatListController.currentSession);
-                chatListController.update();
-              });
-              scrollToBottom();
-            },
-            onTap: () {
-              //
-            },
           );
         });
   }

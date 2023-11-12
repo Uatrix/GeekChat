@@ -49,7 +49,7 @@ class ChatEditPage extends StatelessWidget {
           padding: const EdgeInsets.only(
               left: 10.0, top: 0.0, right: 10.0, bottom: 0.0),
           children: [
-            const Divider(),
+            // const Divider(),
             ListTile(
               dense: true,
               title: Text(
@@ -63,7 +63,6 @@ class ChatEditPage extends StatelessWidget {
               child: TextFormField(
                 initialValue: controller.currentSession.name,
                 decoration: InputDecoration(
-                  labelText: 'Session Name'.tr,
                   filled: false,
                 ),
                 onChanged: (value) {
