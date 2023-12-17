@@ -30,6 +30,5 @@ startup_notify: true
 # 
 # 以下示例展示了如何将 libcurl 库与您的应用捆绑在一起
 #
-# include:
-#   - libcurl.so.4
-include: []
+include:
+  - gtk+-3.0
