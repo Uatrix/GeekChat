@@ -125,6 +125,7 @@ jobs:
           SYSTEM_OS_NAME: "windows"
           VERSION: "${{ steps.get_version.outputs.version-without-v }}"
         run: |
+          sudo apt install ninja-build
           sudo apt install locate
           wget -O appimagetool "https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-x86_64.AppImage"
           chmod +x appimagetool
