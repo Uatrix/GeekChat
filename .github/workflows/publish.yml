@@ -11,12 +11,12 @@ jobs:
         include:
           #   - target: aarch64-apple-darwin
           # platform: macos-latest
-          - target: x86_64-apple-darwin
-            platform: macos-latest
-          #   - target: x86_64-unknown-linux-gnu
-          # platform: ubuntu-20.04
-          - target: x86_64-pc-windows-msvc
-            platform: windows-latest
+          # - target: x86_64-apple-darwin
+          #   platform: macos-latest
+          - target: x86_64-unknown-linux-gnu
+            platform: ubuntu-latest
+          # - target: x86_64-pc-windows-msvc
+          #   platform: windows-latest
 
     runs-on: ${{ matrix.platform }}
     steps:
@@ -82,7 +82,9 @@ jobs:
       - name: Change Version
         env:
           VERSION: "${{ steps.get_version.outputs.version-without-v }}"
-        run: python script/cmd.py -v
+        run: |
+          echo "$VERSION"
+          python script/cmd.py -v
 
       - name: Build macos ios and android (site)
         if: matrix.platform == 'macos-latest'
