@@ -1,7 +1,6 @@
 name: "Publish"
 on:
-  push:
-    tags: [v\d+\.\d+\.\d+]
+  push
 jobs:
   fullter-build:
     permissions:
